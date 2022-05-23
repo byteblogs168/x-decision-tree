@@ -1,6 +1,7 @@
 package com.x.decision.tree;
 
 import com.googlecode.aviator.AviatorEvaluator;
+import lombok.extern.slf4j.Slf4j;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -12,9 +13,27 @@ import java.util.Map;
  * @author: www.byteblogs.com
  * @date : 2022-05-20 15:33
  */
+@Slf4j
 public class XDecisionTreeEngine {
 
-    private XDecisionTreeEngine() {}
+    private XDecisionTreeEngine() {
+    }
+
+    /**
+     * 执行决策逻辑
+     *
+     * @param root  节点
+     * @param param 执行参数
+     * @param id    标识id
+     * @return 返回决策的节点
+     */
+    public static TreeNode doDecision(TreeNode root, Map<String, Object> param, String id) {
+
+        StringBuilder logs = new StringBuilder();
+        TreeNode treeNode = doDecision(root, param, logs);
+        log.warn("id:[{}] 决策路径:[{}]", id, logs);
+        return treeNode;
+    }
 
     /**
      * 执行决策逻辑

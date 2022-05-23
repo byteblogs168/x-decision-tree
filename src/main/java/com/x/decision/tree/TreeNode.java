@@ -32,4 +32,31 @@ public class TreeNode {
      * 叶子节点是aviator表达式, 非叶子节点是具体处理器
      */
     private Object handler;
+
+    /**
+     * 创建叶子节点的树节点
+     */
+    public static TreeNode buildTreeNode(final String name, final Object handler) {
+        return buildTreeNode(name, null, true, handler);
+    }
+
+    /**
+     * 创建非叶子节点的树节点
+     */
+    public static TreeNode buildTreeNode(final String name, final List<TreeNode> treeNodes, final Object handler) {
+        return buildTreeNode(name, treeNodes, false, handler);
+    }
+
+    /**
+     * 创建树节点
+     */
+    public static TreeNode buildTreeNode(final String name, final List<TreeNode> treeNodes,
+                                          final boolean isLeaf, final Object handler) {
+        TreeNode treeNode = new TreeNode();
+        treeNode.setLeaf(isLeaf);
+        treeNode.setName(name);
+        treeNode.setNext(treeNodes);
+        treeNode.setHandler(handler);
+        return treeNode;
+    }
 }
