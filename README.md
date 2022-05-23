@@ -4,6 +4,9 @@
 
 **下面是一个决策案例**
 
+![descision.jpg](./descision.jpg)
+
+
 1. 创建决策树
 ```java
 private TreeNode buildDecisionTree() {
